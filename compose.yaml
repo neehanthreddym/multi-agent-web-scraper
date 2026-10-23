@@ -1,0 +1,147 @@
+name: competitor-product-intelligence
+
+x-backend-environment: &backend-environment
+  POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-catalog-local-only}
+  RABBITMQ_PASSWORD: ${RABBITMQ_PASSWORD:-catalog-local-only}
+
+services:
+  postgres:
+    image: docker.io/library/postgres:17-bookworm
+    environment:
+      POSTGRES_USER: catalog
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-catalog-local-only}
+      POSTGRES_DB: catalog
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U catalog -d catalog"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 20s
+
+  rabbitmq:
+    image: docker.io/library/rabbitmq:4.3-alpine
+    hostname: rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: catalog
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD:-catalog-local-only}
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    healthcheck:
+      # Use the image entrypoint to run diagnostics as rabbitmq, preventing
+      # a root health check from creating an unreadable Erlang cookie.
+      test: ["CMD", "docker-entrypoint.sh", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 15s
+      timeout: 10s
+      retries: 12
+      start_period: 30s
+
+  fixture:
+    build:
+      context: ./fixtures
+    ports:
+      - "127.0.0.1:8001:8080"
+    healthcheck:
+      test: ["CMD", "python", "/srv/healthcheck.py"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  api:
+    build:
+      context: ./backend
+    environment: *backend-environment
+    ports:
+      - "127.0.0.1:8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+      fixture:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-m", "app.healthcheck"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  worker:
+    build:
+      context: ./backend
+    environment: *backend-environment
+    command: ["celery", "-A", "app.celery_app:celery_app", "worker", "--loglevel=INFO", "--concurrency=1"]
+    restart: unless-stopped
+    stop_grace_period: 75s
+    depends_on:
+      api:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "celery", "-A", "app.celery_app:celery_app", "inspect", "ping", "--timeout=3"]
+      interval: 20s
+      timeout: 8s
+      retries: 10
+      start_period: 20s
+
+  dispatcher:
+    build:
+      context: ./backend
+    environment: *backend-environment
+    command: ["python", "-m", "app.dispatcher"]
+    restart: unless-stopped
+    depends_on:
+      api:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-m", "app.dispatcher_healthcheck"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+  web:
+    build:
+      context: ./frontend
+      target: development
+    ports:
+      - "127.0.0.1:5173:5173"
+    depends_on:
+      api:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "node", "/app/healthcheck.mjs"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+  ui-tests:
+    profiles: ["test"]
+    build:
+      context: ./frontend
+      target: browser-tests
+    environment:
+      UI_BASE_URL: http://web:5173
+    shm_size: 256mb
+    depends_on:
+      web:
+        condition: service_healthy
+      worker:
+        condition: service_healthy
+      dispatcher:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
+  rabbitmq_data:

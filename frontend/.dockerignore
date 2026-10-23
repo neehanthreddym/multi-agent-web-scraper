@@ -1,0 +1,15 @@
+*
+!Dockerfile
+!package.json
+!package-lock.json
+!tsconfig.json
+!vite.config.ts
+!vitest.config.ts
+!components.json
+!index.html
+!healthcheck.mjs
+!playwright.config.ts
+!src/
+!src/**
+!e2e/
+!e2e/**

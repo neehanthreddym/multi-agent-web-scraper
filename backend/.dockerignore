@@ -1,0 +1,13 @@
+*
+!Dockerfile
+!requirements.txt
+!requirements-dev.txt
+!alembic.ini
+!migrations/
+!migrations/**
+!tests/
+!tests/**
+!app/
+!app/**
+app/**/__pycache__/
+app/**/*.pyc
