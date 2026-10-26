@@ -1,0 +1,1089 @@
+{
+  "schema_version": 1,
+  "dataset_id": "catalog-development",
+  "dataset_version": "1.0.0",
+  "label_origin": "authored_ground_truth_not_extractor_output",
+  "pages": [
+    {
+      "page_id": "desk-lamp",
+      "expected_product_count": 1,
+      "products": [
+        {
+          "dataset_product_id": "desk-lamp-product",
+          "fields": {
+            "product_name": {
+              "value": "Studio Desk Lamp",
+              "null_reason": null,
+              "rationale": "Source value is explicit and supported by the dataset policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 0,
+                  "json_pointer": "/name",
+                  "raw_value": "Studio Desk Lamp",
+                  "excerpt": "\"Studio Desk Lamp\""
+                }
+              ]
+            },
+            "source_product_id": {
+              "value": "LAMP-001",
+              "null_reason": null,
+              "rationale": "Source value is explicit and supported by the dataset policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 0,
+                  "json_pointer": "/sku",
+                  "raw_value": "LAMP-001",
+                  "excerpt": "\"LAMP-001\""
+                }
+              ]
+            },
+            "current_price": {
+              "value": "49.90",
+              "null_reason": null,
+              "rationale": "Source value is explicit and supported by the dataset policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 0,
+                  "json_pointer": "/offers/price",
+                  "raw_value": "49.90",
+                  "excerpt": "\"49.90\""
+                }
+              ]
+            },
+            "currency": {
+              "value": "USD",
+              "null_reason": null,
+              "rationale": "Source value is explicit and supported by the dataset policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 0,
+                  "json_pointer": "/offers/priceCurrency",
+                  "raw_value": "USD",
+                  "excerpt": "\"USD\""
+                }
+              ]
+            },
+            "availability": {
+              "value": "in_stock",
+              "null_reason": null,
+              "rationale": "Source value is explicit and supported by the dataset policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 0,
+                  "json_pointer": "/offers/availability",
+                  "raw_value": "https://schema.org/InStock",
+                  "excerpt": "\"https://schema.org/InStock\""
+                }
+              ]
+            },
+            "product_url": {
+              "value": "http://fixture:8080/products/desk-lamp.html",
+              "null_reason": null,
+              "rationale": "Source value is explicit and supported by the dataset policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 0,
+                  "json_pointer": "/offers/url",
+                  "raw_value": "http://fixture:8080/products/desk-lamp.html",
+                  "excerpt": "\"http://fixture:8080/products/desk-lamp.html\""
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "page_id": "graph-monitor",
+      "expected_product_count": 1,
+      "products": [
+        {
+          "dataset_product_id": "graph-monitor-product",
+          "fields": {
+            "product_name": {
+              "value": "Focus Monitor",
+              "null_reason": null,
+              "rationale": "Source value is explicit and supported by the dataset policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 0,
+                  "json_pointer": "/@graph/1/name",
+                  "raw_value": "Focus Monitor",
+                  "excerpt": "\"Focus Monitor\""
+                }
+              ]
+            },
+            "source_product_id": {
+              "value": "MON-002",
+              "null_reason": null,
+              "rationale": "Source value is explicit and supported by the dataset policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 0,
+                  "json_pointer": "/@graph/1/sku",
+                  "raw_value": "MON-002",
+                  "excerpt": "\"MON-002\""
+                }
+              ]
+            },
+            "current_price": {
+              "value": "249.00",
+              "null_reason": null,
+              "rationale": "Source value is explicit and supported by the dataset policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 0,
+                  "json_pointer": "/@graph/1/offers/price",
+                  "raw_value": "249.00",
+                  "excerpt": "\"249.00\""
+                }
+              ]
+            },
+            "currency": {
+              "value": "EUR",
+              "null_reason": null,
+              "rationale": "Source value is explicit and supported by the dataset policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 0,
+                  "json_pointer": "/@graph/1/offers/priceCurrency",
+                  "raw_value": "EUR",
+                  "excerpt": "\"EUR\""
+                }
+              ]
+            },
+            "availability": {
+              "value": "out_of_stock",
+              "null_reason": null,
+              "rationale": "Source value is explicit and supported by the dataset policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 0,
+                  "json_pointer": "/@graph/1/offers/availability",
+                  "raw_value": "https://schema.org/OutOfStock",
+                  "excerpt": "\"https://schema.org/OutOfStock\""
+                }
+              ]
+            },
+            "product_url": {
+              "value": "http://fixture:8080/products/graph-monitor.html",
+              "null_reason": null,
+              "rationale": "Source value is explicit and supported by the dataset policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 0,
+                  "json_pointer": "/@graph/1/offers/url",
+                  "raw_value": "http://fixture:8080/products/graph-monitor.html",
+                  "excerpt": "\"http://fixture:8080/products/graph-monitor.html\""
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "page_id": "array-keyboard",
+      "expected_product_count": 1,
+      "products": [
+        {
+          "dataset_product_id": "array-keyboard-product",
+          "fields": {
+            "product_name": {
+              "value": "Quiet Keyboard",
+              "null_reason": null,
+              "rationale": "Source value is explicit and supported by the dataset policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 0,
+                  "json_pointer": "/1/name",
+                  "raw_value": "Quiet Keyboard",
+                  "excerpt": "\"Quiet Keyboard\""
+                }
+              ]
+            },
+            "source_product_id": {
+              "value": "KEY-003",
+              "null_reason": null,
+              "rationale": "Source value is explicit and supported by the dataset policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 0,
+                  "json_pointer": "/1/sku",
+                  "raw_value": "KEY-003",
+                  "excerpt": "\"KEY-003\""
+                }
+              ]
+            },
+            "current_price": {
+              "value": "79.95",
+              "null_reason": null,
+              "rationale": "Source value is explicit and supported by the dataset policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 0,
+                  "json_pointer": "/1/offers/0/price",
+                  "raw_value": "79.95",
+                  "excerpt": "\"79.95\""
+                }
+              ]
+            },
+            "currency": {
+              "value": "GBP",
+              "null_reason": null,
+              "rationale": "Source value is explicit and supported by the dataset policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 0,
+                  "json_pointer": "/1/offers/0/priceCurrency",
+                  "raw_value": "GBP",
+                  "excerpt": "\"GBP\""
+                }
+              ]
+            },
+            "availability": {
+              "value": "preorder",
+              "null_reason": null,
+              "rationale": "Source value is explicit and supported by the dataset policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 0,
+                  "json_pointer": "/1/offers/0/availability",
+                  "raw_value": "https://schema.org/PreOrder",
+                  "excerpt": "\"https://schema.org/PreOrder\""
+                }
+              ]
+            },
+            "product_url": {
+              "value": "http://fixture:8080/products/array-keyboard.html",
+              "null_reason": null,
+              "rationale": "Source value is explicit and supported by the dataset policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 0,
+                  "json_pointer": "/1/offers/0/url",
+                  "raw_value": "http://fixture:8080/products/array-keyboard.html",
+                  "excerpt": "\"http://fixture:8080/products/array-keyboard.html\""
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "page_id": "multi-script-mouse",
+      "expected_product_count": 1,
+      "products": [
+        {
+          "dataset_product_id": "multi-script-mouse-product",
+          "fields": {
+            "product_name": {
+              "value": "Travel Mouse",
+              "null_reason": null,
+              "rationale": "Source value is explicit and supported by the dataset policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 1,
+                  "json_pointer": "/name",
+                  "raw_value": "Travel Mouse",
+                  "excerpt": "\"Travel Mouse\""
+                }
+              ]
+            },
+            "source_product_id": {
+              "value": "MOU-004",
+              "null_reason": null,
+              "rationale": "Source value is explicit and supported by the dataset policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 1,
+                  "json_pointer": "/sku",
+                  "raw_value": "MOU-004",
+                  "excerpt": "\"MOU-004\""
+                }
+              ]
+            },
+            "current_price": {
+              "value": "24.50",
+              "null_reason": null,
+              "rationale": "Source value is explicit and supported by the dataset policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 1,
+                  "json_pointer": "/offers/price",
+                  "raw_value": "24.50",
+                  "excerpt": "\"24.50\""
+                }
+              ]
+            },
+            "currency": {
+              "value": "USD",
+              "null_reason": null,
+              "rationale": "Source value is explicit and supported by the dataset policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 1,
+                  "json_pointer": "/offers/priceCurrency",
+                  "raw_value": "USD",
+                  "excerpt": "\"USD\""
+                }
+              ]
+            },
+            "availability": {
+              "value": "in_stock",
+              "null_reason": null,
+              "rationale": "Source value is explicit and supported by the dataset policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 1,
+                  "json_pointer": "/offers/availability",
+                  "raw_value": "https://schema.org/InStock",
+                  "excerpt": "\"https://schema.org/InStock\""
+                }
+              ]
+            },
+            "product_url": {
+              "value": "http://fixture:8080/products/multi-script-mouse.html",
+              "null_reason": null,
+              "rationale": "Source value is explicit and supported by the dataset policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 1,
+                  "json_pointer": "/offers/url",
+                  "raw_value": "http://fixture:8080/products/multi-script-mouse.html",
+                  "excerpt": "\"http://fixture:8080/products/multi-script-mouse.html\""
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "page_id": "missing-id-stand",
+      "expected_product_count": 1,
+      "products": [
+        {
+          "dataset_product_id": "missing-id-stand-product",
+          "fields": {
+            "product_name": {
+              "value": "Adjustable Stand",
+              "null_reason": null,
+              "rationale": "Source value is explicit and supported by the dataset policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 0,
+                  "json_pointer": "/name",
+                  "raw_value": "Adjustable Stand",
+                  "excerpt": "\"Adjustable Stand\""
+                }
+              ]
+            },
+            "source_product_id": {
+              "value": null,
+              "null_reason": "missing_value",
+              "rationale": "No source SKU is published; the dataset identity is not a source product ID.",
+              "evidence": [
+                {
+                  "kind": "json_ld_absence",
+                  "script_index": 0,
+                  "json_pointer": "",
+                  "raw_value": {
+                    "@context": "https://schema.org",
+                    "@type": "Product",
+                    "name": "Adjustable Stand",
+                    "offers": {
+                      "@type": "Offer",
+                      "price": "39.00",
+                      "priceCurrency": "USD",
+                      "availability": "https://schema.org/InStock",
+                      "url": "http://fixture:8080/products/missing-id-stand.html"
+                    }
+                  },
+                  "excerpt": "{\"@context\":\"https://schema.org\",\"@type\":\"Product\",\"name\":\"Adjustable Stand\",\"offers\":{\"@type\":\"Offer\",\"price\":\"39.00\",\"priceCurrency\":\"USD\",\"availability\":\"https://schema.org/InStock\",\"url\":\"http://fixture:8080/products/missing-id-stand.html\"}}",
+                  "missing_key": "sku"
+                }
+              ]
+            },
+            "current_price": {
+              "value": "39.00",
+              "null_reason": null,
+              "rationale": "Source value is explicit and supported by the dataset policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 0,
+                  "json_pointer": "/offers/price",
+                  "raw_value": "39.00",
+                  "excerpt": "\"39.00\"",
+                  "missing_key": "sku"
+                }
+              ]
+            },
+            "currency": {
+              "value": "USD",
+              "null_reason": null,
+              "rationale": "Source value is explicit and supported by the dataset policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 0,
+                  "json_pointer": "/offers/priceCurrency",
+                  "raw_value": "USD",
+                  "excerpt": "\"USD\"",
+                  "missing_key": "sku"
+                }
+              ]
+            },
+            "availability": {
+              "value": "in_stock",
+              "null_reason": null,
+              "rationale": "Source value is explicit and supported by the dataset policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 0,
+                  "json_pointer": "/offers/availability",
+                  "raw_value": "https://schema.org/InStock",
+                  "excerpt": "\"https://schema.org/InStock\"",
+                  "missing_key": "sku"
+                }
+              ]
+            },
+            "product_url": {
+              "value": "http://fixture:8080/products/missing-id-stand.html",
+              "null_reason": null,
+              "rationale": "Source value is explicit and supported by the dataset policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 0,
+                  "json_pointer": "/offers/url",
+                  "raw_value": "http://fixture:8080/products/missing-id-stand.html",
+                  "excerpt": "\"http://fixture:8080/products/missing-id-stand.html\"",
+                  "missing_key": "sku"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "page_id": "missing-price-speaker",
+      "expected_product_count": 1,
+      "products": [
+        {
+          "dataset_product_id": "missing-price-speaker-product",
+          "fields": {
+            "product_name": {
+              "value": "Compact Speaker",
+              "null_reason": null,
+              "rationale": "Source value is explicit and supported by the dataset policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 0,
+                  "json_pointer": "/name",
+                  "raw_value": "Compact Speaker",
+                  "excerpt": "\"Compact Speaker\"",
+                  "missing_key": "sku"
+                }
+              ]
+            },
+            "source_product_id": {
+              "value": "SPK-006",
+              "null_reason": null,
+              "rationale": "Source value is explicit and supported by the dataset policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 0,
+                  "json_pointer": "/sku",
+                  "raw_value": "SPK-006",
+                  "excerpt": "\"SPK-006\"",
+                  "missing_key": "sku"
+                }
+              ]
+            },
+            "current_price": {
+              "value": null,
+              "null_reason": "missing_value",
+              "rationale": "The offer omits price; no amount may be invented.",
+              "evidence": [
+                {
+                  "kind": "json_ld_absence",
+                  "script_index": 0,
+                  "json_pointer": "/offers",
+                  "raw_value": {
+                    "@type": "Offer",
+                    "priceCurrency": "USD",
+                    "availability": "https://schema.org/InStock",
+                    "url": "http://fixture:8080/products/missing-price-speaker.html"
+                  },
+                  "excerpt": "{\"@type\":\"Offer\",\"priceCurrency\":\"USD\",\"availability\":\"https://schema.org/InStock\",\"url\":\"http://fixture:8080/products/missing-price-speaker.html\"}",
+                  "missing_key": "price"
+                }
+              ]
+            },
+            "currency": {
+              "value": "USD",
+              "null_reason": null,
+              "rationale": "Source value is explicit and supported by the dataset policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 0,
+                  "json_pointer": "/offers/priceCurrency",
+                  "raw_value": "USD",
+                  "excerpt": "\"USD\"",
+                  "missing_key": "price"
+                }
+              ]
+            },
+            "availability": {
+              "value": "in_stock",
+              "null_reason": null,
+              "rationale": "Source value is explicit and supported by the dataset policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 0,
+                  "json_pointer": "/offers/availability",
+                  "raw_value": "https://schema.org/InStock",
+                  "excerpt": "\"https://schema.org/InStock\"",
+                  "missing_key": "price"
+                }
+              ]
+            },
+            "product_url": {
+              "value": "http://fixture:8080/products/missing-price-speaker.html",
+              "null_reason": null,
+              "rationale": "Source value is explicit and supported by the dataset policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 0,
+                  "json_pointer": "/offers/url",
+                  "raw_value": "http://fixture:8080/products/missing-price-speaker.html",
+                  "excerpt": "\"http://fixture:8080/products/missing-price-speaker.html\"",
+                  "missing_key": "price"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "page_id": "ambiguous-currency-mug",
+      "expected_product_count": 1,
+      "products": [
+        {
+          "dataset_product_id": "ambiguous-currency-mug-product",
+          "fields": {
+            "product_name": {
+              "value": "Travel Mug",
+              "null_reason": null,
+              "rationale": "Source value is explicit and supported by the dataset policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 0,
+                  "json_pointer": "/name",
+                  "raw_value": "Travel Mug",
+                  "excerpt": "\"Travel Mug\"",
+                  "missing_key": "price"
+                }
+              ]
+            },
+            "source_product_id": {
+              "value": "MUG-007",
+              "null_reason": null,
+              "rationale": "Source value is explicit and supported by the dataset policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 0,
+                  "json_pointer": "/sku",
+                  "raw_value": "MUG-007",
+                  "excerpt": "\"MUG-007\"",
+                  "missing_key": "price"
+                }
+              ]
+            },
+            "current_price": {
+              "value": "19.00",
+              "null_reason": null,
+              "rationale": "Source value is explicit and supported by the dataset policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 0,
+                  "json_pointer": "/offers/price",
+                  "raw_value": "19.00",
+                  "excerpt": "\"19.00\"",
+                  "missing_key": "price"
+                }
+              ]
+            },
+            "currency": {
+              "value": null,
+              "null_reason": "unsupported_value",
+              "rationale": "The symbol $ is ambiguous; no ISO currency code is supplied and USD must not be inferred.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 0,
+                  "json_pointer": "/offers/priceCurrency",
+                  "raw_value": "$",
+                  "excerpt": "\"$\"",
+                  "missing_key": "price"
+                }
+              ]
+            },
+            "availability": {
+              "value": "in_stock",
+              "null_reason": null,
+              "rationale": "Source value is explicit and supported by the dataset policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 0,
+                  "json_pointer": "/offers/availability",
+                  "raw_value": "https://schema.org/InStock",
+                  "excerpt": "\"https://schema.org/InStock\"",
+                  "missing_key": "price"
+                }
+              ]
+            },
+            "product_url": {
+              "value": "http://fixture:8080/products/ambiguous-currency-mug.html",
+              "null_reason": null,
+              "rationale": "Source value is explicit and supported by the dataset policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 0,
+                  "json_pointer": "/offers/url",
+                  "raw_value": "http://fixture:8080/products/ambiguous-currency-mug.html",
+                  "excerpt": "\"http://fixture:8080/products/ambiguous-currency-mug.html\"",
+                  "missing_key": "price"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "page_id": "invalid-price-hub",
+      "expected_product_count": 1,
+      "products": [
+        {
+          "dataset_product_id": "invalid-price-hub-product",
+          "fields": {
+            "product_name": {
+              "value": "USB Hub",
+              "null_reason": null,
+              "rationale": "Source value is explicit and supported by the dataset policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 0,
+                  "json_pointer": "/name",
+                  "raw_value": "USB Hub",
+                  "excerpt": "\"USB Hub\"",
+                  "missing_key": "price"
+                }
+              ]
+            },
+            "source_product_id": {
+              "value": "HUB-008",
+              "null_reason": null,
+              "rationale": "Source value is explicit and supported by the dataset policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 0,
+                  "json_pointer": "/sku",
+                  "raw_value": "HUB-008",
+                  "excerpt": "\"HUB-008\"",
+                  "missing_key": "price"
+                }
+              ]
+            },
+            "current_price": {
+              "value": null,
+              "null_reason": "unsupported_value",
+              "rationale": "The source amount is negative; current price must be a non-negative finite decimal.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 0,
+                  "json_pointer": "/offers/price",
+                  "raw_value": "-12.00",
+                  "excerpt": "\"-12.00\"",
+                  "missing_key": "price"
+                }
+              ]
+            },
+            "currency": {
+              "value": "USD",
+              "null_reason": null,
+              "rationale": "Source value is explicit and supported by the dataset policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 0,
+                  "json_pointer": "/offers/priceCurrency",
+                  "raw_value": "USD",
+                  "excerpt": "\"USD\"",
+                  "missing_key": "price"
+                }
+              ]
+            },
+            "availability": {
+              "value": "in_stock",
+              "null_reason": null,
+              "rationale": "Source value is explicit and supported by the dataset policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 0,
+                  "json_pointer": "/offers/availability",
+                  "raw_value": "https://schema.org/InStock",
+                  "excerpt": "\"https://schema.org/InStock\"",
+                  "missing_key": "price"
+                }
+              ]
+            },
+            "product_url": {
+              "value": "http://fixture:8080/products/invalid-price-hub.html",
+              "null_reason": null,
+              "rationale": "Source value is explicit and supported by the dataset policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 0,
+                  "json_pointer": "/offers/url",
+                  "raw_value": "http://fixture:8080/products/invalid-price-hub.html",
+                  "excerpt": "\"http://fixture:8080/products/invalid-price-hub.html\"",
+                  "missing_key": "price"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "page_id": "multiple-offers-chair",
+      "expected_product_count": 1,
+      "products": [
+        {
+          "dataset_product_id": "multiple-offers-chair-product",
+          "fields": {
+            "product_name": {
+              "value": "Task Chair",
+              "null_reason": null,
+              "rationale": "Source value is explicit and supported by the dataset policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 0,
+                  "json_pointer": "/name",
+                  "raw_value": "Task Chair",
+                  "excerpt": "\"Task Chair\"",
+                  "missing_key": "price"
+                }
+              ]
+            },
+            "source_product_id": {
+              "value": "CHR-009",
+              "null_reason": null,
+              "rationale": "Source value is explicit and supported by the dataset policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 0,
+                  "json_pointer": "/sku",
+                  "raw_value": "CHR-009",
+                  "excerpt": "\"CHR-009\"",
+                  "missing_key": "price"
+                }
+              ]
+            },
+            "current_price": {
+              "value": null,
+              "null_reason": "unsupported_offer_structure",
+              "rationale": "Two offers have no declared primary selection; all offer-level fields abstain under the one-offer policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 0,
+                  "json_pointer": "/offers",
+                  "raw_value": [
+                    {
+                      "@type": "Offer",
+                      "price": "129.00",
+                      "priceCurrency": "USD",
+                      "availability": "https://schema.org/InStock",
+                      "url": "http://fixture:8080/products/multiple-offers-chair.html"
+                    },
+                    {
+                      "@type": "Offer",
+                      "price": "149.00",
+                      "priceCurrency": "USD",
+                      "availability": "https://schema.org/OutOfStock",
+                      "url": "http://fixture:8080/products/multiple-offers-chair.html"
+                    }
+                  ],
+                  "excerpt": "[{\"@type\":\"Offer\",\"price\":\"129.00\",\"priceCurrency\":\"USD\",\"availability\":\"https://schema.org/InStock\",\"url\":\"http://fixture:8080/products/multiple-offers-chair.html\"},{\"@type\":\"Offer\",\"price\":\"149.00\",\"priceCurrency\":\"USD\",\"availability\":\"https://schema.org/OutOfStock\",\"url\":\"http://fixture:8080/products/multiple-offers-chair.html\"}]",
+                  "missing_key": "price"
+                }
+              ]
+            },
+            "currency": {
+              "value": null,
+              "null_reason": "unsupported_offer_structure",
+              "rationale": "Two offers have no declared primary selection; all offer-level fields abstain under the one-offer policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 0,
+                  "json_pointer": "/offers",
+                  "raw_value": [
+                    {
+                      "@type": "Offer",
+                      "price": "129.00",
+                      "priceCurrency": "USD",
+                      "availability": "https://schema.org/InStock",
+                      "url": "http://fixture:8080/products/multiple-offers-chair.html"
+                    },
+                    {
+                      "@type": "Offer",
+                      "price": "149.00",
+                      "priceCurrency": "USD",
+                      "availability": "https://schema.org/OutOfStock",
+                      "url": "http://fixture:8080/products/multiple-offers-chair.html"
+                    }
+                  ],
+                  "excerpt": "[{\"@type\":\"Offer\",\"price\":\"129.00\",\"priceCurrency\":\"USD\",\"availability\":\"https://schema.org/InStock\",\"url\":\"http://fixture:8080/products/multiple-offers-chair.html\"},{\"@type\":\"Offer\",\"price\":\"149.00\",\"priceCurrency\":\"USD\",\"availability\":\"https://schema.org/OutOfStock\",\"url\":\"http://fixture:8080/products/multiple-offers-chair.html\"}]",
+                  "missing_key": "price"
+                }
+              ]
+            },
+            "availability": {
+              "value": null,
+              "null_reason": "unsupported_offer_structure",
+              "rationale": "Two offers have no declared primary selection; all offer-level fields abstain under the one-offer policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 0,
+                  "json_pointer": "/offers",
+                  "raw_value": [
+                    {
+                      "@type": "Offer",
+                      "price": "129.00",
+                      "priceCurrency": "USD",
+                      "availability": "https://schema.org/InStock",
+                      "url": "http://fixture:8080/products/multiple-offers-chair.html"
+                    },
+                    {
+                      "@type": "Offer",
+                      "price": "149.00",
+                      "priceCurrency": "USD",
+                      "availability": "https://schema.org/OutOfStock",
+                      "url": "http://fixture:8080/products/multiple-offers-chair.html"
+                    }
+                  ],
+                  "excerpt": "[{\"@type\":\"Offer\",\"price\":\"129.00\",\"priceCurrency\":\"USD\",\"availability\":\"https://schema.org/InStock\",\"url\":\"http://fixture:8080/products/multiple-offers-chair.html\"},{\"@type\":\"Offer\",\"price\":\"149.00\",\"priceCurrency\":\"USD\",\"availability\":\"https://schema.org/OutOfStock\",\"url\":\"http://fixture:8080/products/multiple-offers-chair.html\"}]",
+                  "missing_key": "price"
+                }
+              ]
+            },
+            "product_url": {
+              "value": null,
+              "null_reason": "unsupported_offer_structure",
+              "rationale": "Two offers have no declared primary selection; all offer-level fields abstain under the one-offer policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 0,
+                  "json_pointer": "/offers",
+                  "raw_value": [
+                    {
+                      "@type": "Offer",
+                      "price": "129.00",
+                      "priceCurrency": "USD",
+                      "availability": "https://schema.org/InStock",
+                      "url": "http://fixture:8080/products/multiple-offers-chair.html"
+                    },
+                    {
+                      "@type": "Offer",
+                      "price": "149.00",
+                      "priceCurrency": "USD",
+                      "availability": "https://schema.org/OutOfStock",
+                      "url": "http://fixture:8080/products/multiple-offers-chair.html"
+                    }
+                  ],
+                  "excerpt": "[{\"@type\":\"Offer\",\"price\":\"129.00\",\"priceCurrency\":\"USD\",\"availability\":\"https://schema.org/InStock\",\"url\":\"http://fixture:8080/products/multiple-offers-chair.html\"},{\"@type\":\"Offer\",\"price\":\"149.00\",\"priceCurrency\":\"USD\",\"availability\":\"https://schema.org/OutOfStock\",\"url\":\"http://fixture:8080/products/multiple-offers-chair.html\"}]",
+                  "missing_key": "price"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "page_id": "missing-offer-shelf",
+      "expected_product_count": 1,
+      "products": [
+        {
+          "dataset_product_id": "missing-offer-shelf-product",
+          "fields": {
+            "product_name": {
+              "value": "Wall Shelf",
+              "null_reason": null,
+              "rationale": "Source value is explicit and supported by the dataset policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 0,
+                  "json_pointer": "/name",
+                  "raw_value": "Wall Shelf",
+                  "excerpt": "\"Wall Shelf\"",
+                  "missing_key": "price"
+                }
+              ]
+            },
+            "source_product_id": {
+              "value": "SHF-010",
+              "null_reason": null,
+              "rationale": "Source value is explicit and supported by the dataset policy.",
+              "evidence": [
+                {
+                  "kind": "json_ld_value",
+                  "script_index": 0,
+                  "json_pointer": "/sku",
+                  "raw_value": "SHF-010",
+                  "excerpt": "\"SHF-010\"",
+                  "missing_key": "price"
+                }
+              ]
+            },
+            "current_price": {
+              "value": null,
+              "null_reason": "missing_offer",
+              "rationale": "The product has no offers object; no offer-level value is inferred from the page URL.",
+              "evidence": [
+                {
+                  "kind": "json_ld_absence",
+                  "script_index": 0,
+                  "json_pointer": "",
+                  "raw_value": {
+                    "@context": "https://schema.org",
+                    "@type": "Product",
+                    "name": "Wall Shelf",
+                    "sku": "SHF-010"
+                  },
+                  "excerpt": "{\"@context\":\"https://schema.org\",\"@type\":\"Product\",\"name\":\"Wall Shelf\",\"sku\":\"SHF-010\"}",
+                  "missing_key": "offers"
+                }
+              ]
+            },
+            "currency": {
+              "value": null,
+              "null_reason": "missing_offer",
+              "rationale": "The product has no offers object; no offer-level value is inferred from the page URL.",
+              "evidence": [
+                {
+                  "kind": "json_ld_absence",
+                  "script_index": 0,
+                  "json_pointer": "",
+                  "raw_value": {
+                    "@context": "https://schema.org",
+                    "@type": "Product",
+                    "name": "Wall Shelf",
+                    "sku": "SHF-010"
+                  },
+                  "excerpt": "{\"@context\":\"https://schema.org\",\"@type\":\"Product\",\"name\":\"Wall Shelf\",\"sku\":\"SHF-010\"}",
+                  "missing_key": "offers"
+                }
+              ]
+            },
+            "availability": {
+              "value": null,
+              "null_reason": "missing_offer",
+              "rationale": "The product has no offers object; no offer-level value is inferred from the page URL.",
+              "evidence": [
+                {
+                  "kind": "json_ld_absence",
+                  "script_index": 0,
+                  "json_pointer": "",
+                  "raw_value": {
+                    "@context": "https://schema.org",
+                    "@type": "Product",
+                    "name": "Wall Shelf",
+                    "sku": "SHF-010"
+                  },
+                  "excerpt": "{\"@context\":\"https://schema.org\",\"@type\":\"Product\",\"name\":\"Wall Shelf\",\"sku\":\"SHF-010\"}",
+                  "missing_key": "offers"
+                }
+              ]
+            },
+            "product_url": {
+              "value": null,
+              "null_reason": "missing_offer",
+              "rationale": "The product has no offers object; no offer-level value is inferred from the page URL.",
+              "evidence": [
+                {
+                  "kind": "json_ld_absence",
+                  "script_index": 0,
+                  "json_pointer": "",
+                  "raw_value": {
+                    "@context": "https://schema.org",
+                    "@type": "Product",
+                    "name": "Wall Shelf",
+                    "sku": "SHF-010"
+                  },
+                  "excerpt": "{\"@context\":\"https://schema.org\",\"@type\":\"Product\",\"name\":\"Wall Shelf\",\"sku\":\"SHF-010\"}",
+                  "missing_key": "offers"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

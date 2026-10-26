@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "dataset_id": "catalog-development",
+  "dataset_version": "1.0.0",
+  "created_on": "2026-10-25",
+  "split": "development",
+  "ownership": "synthetic_owned",
+  "label_policy": "single_product_single_offer_v1",
+  "selected_fields": [
+    "product_name",
+    "source_product_id",
+    "current_price",
+    "currency",
+    "availability",
+    "product_url"
+  ],
+  "labels_file": "labels.json",
+  "labels_sha256": "f7c1b4c5c9cc3a0598ae05ba20670e6318f670ca09edd97b437103765c199272",
+  "preserved_baseline": {
+    "page_id": "desk-lamp",
+    "sha256": "68141e6f81c7bf384bfcdf701e47d0a4bf305df04f276087f841e428c5457787"
+  },
+  "pages": [
+    {
+      "page_id": "desk-lamp",
+      "path": "../../catalog/products/desk-lamp.html",
+      "source_url": "http://fixture:8080/products/desk-lamp.html",
+      "sha256": "68141e6f81c7bf384bfcdf701e47d0a4bf305df04f276087f841e428c5457787",
+      "coverage": [
+        "ordinary",
+        "baseline"
+      ],
+      "expected_outcome": "valid",
+      "scenario": "baseline_single_offer"
+    },
+    {
+      "page_id": "graph-monitor",
+      "path": "../../catalog/products/graph-monitor.html",
+      "source_url": "http://fixture:8080/products/graph-monitor.html",
+      "sha256": "3b1fee4e177e0f12a91dfd915ab84dd7754c4c83cf18314cf83a55dc9a304661",
+      "coverage": [
+        "ordinary",
+        "graph",
+        "out_of_stock"
+      ],
+      "expected_outcome": "valid",
+      "scenario": "graph_product"
+    },
+    {
+      "page_id": "array-keyboard",
+      "path": "../../catalog/products/array-keyboard.html",
+      "source_url": "http://fixture:8080/products/array-keyboard.html",
+      "sha256": "e7c3d3bdecad8acd671bb9f5c59179f329fc79fdd0af48a62d89a4aa893c5f4e",
+      "coverage": [
+        "ordinary",
+        "top_level_array",
+        "single_offer_list",
+        "preorder"
+      ],
+      "expected_outcome": "valid",
+      "scenario": "top_level_array_single_offer_list"
+    },
+    {
+      "page_id": "multi-script-mouse",
+      "path": "../../catalog/products/multi-script-mouse.html",
+      "source_url": "http://fixture:8080/products/multi-script-mouse.html",
+      "sha256": "b3b0c8aa28d0cb0a0fda77bdfe7bb9cd41fdc609eb9019a0ea14e78a7206e656",
+      "coverage": [
+        "ordinary",
+        "multiple_scripts",
+        "type_array"
+      ],
+      "expected_outcome": "valid",
+      "scenario": "multiple_scripts_type_array"
+    },
+    {
+      "page_id": "missing-id-stand",
+      "path": "../../catalog/products/missing-id-stand.html",
+      "source_url": "http://fixture:8080/products/missing-id-stand.html",
+      "sha256": "3d9412163f1f96e6ac35f9cc3f407b56e9c234d97421a68b8c36829755ee64de",
+      "coverage": [
+        "missing_fields",
+        "missing_sku"
+      ],
+      "expected_outcome": "needs_review",
+      "scenario": "missing_product_id"
+    },
+    {
+      "page_id": "missing-price-speaker",
+      "path": "../../catalog/products/missing-price-speaker.html",
+      "source_url": "http://fixture:8080/products/missing-price-speaker.html",
+      "sha256": "7848cab496c18ec37c9df7743fa72a32e005d393bb5ee694a4f44ad212fcad95",
+      "coverage": [
+        "missing_fields",
+        "missing_price"
+      ],
+      "expected_outcome": "needs_review",
+      "scenario": "missing_price"
+    },
+    {
+      "page_id": "ambiguous-currency-mug",
+      "path": "../../catalog/products/ambiguous-currency-mug.html",
+      "source_url": "http://fixture:8080/products/ambiguous-currency-mug.html",
+      "sha256": "35ace5196f5f0bc261197ee453ad15423b9c1b63598178e73bfad2721a8aa840",
+      "coverage": [
+        "ambiguous_currency"
+      ],
+      "expected_outcome": "needs_review",
+      "scenario": "ambiguous_currency"
+    },
+    {
+      "page_id": "invalid-price-hub",
+      "path": "../../catalog/products/invalid-price-hub.html",
+      "source_url": "http://fixture:8080/products/invalid-price-hub.html",
+      "sha256": "a87cec9247ca1838da6c0a7e40a2fa9f98c64b89cead71afeb7290a0872abc24",
+      "coverage": [
+        "invalid_prices"
+      ],
+      "expected_outcome": "needs_review",
+      "scenario": "negative_price"
+    },
+    {
+      "page_id": "multiple-offers-chair",
+      "path": "../../catalog/products/multiple-offers-chair.html",
+      "source_url": "http://fixture:8080/products/multiple-offers-chair.html",
+      "sha256": "6956423eceb4e1ae0877269a23eb635961c1e4a34646e90ced382756edf30a2b",
+      "coverage": [
+        "multiple_offers",
+        "unsupported_offer_structure"
+      ],
+      "expected_outcome": "needs_review",
+      "scenario": "multiple_offers"
+    },
+    {
+      "page_id": "missing-offer-shelf",
+      "path": "../../catalog/products/missing-offer-shelf.html",
+      "source_url": "http://fixture:8080/products/missing-offer-shelf.html",
+      "sha256": "5d46e57374bbe239f7cfdf8cbdfbd42aedf43f28323be2249b3d0d780dbead49",
+      "coverage": [
+        "missing_fields",
+        "missing_offer"
+      ],
+      "expected_outcome": "needs_review",
+      "scenario": "missing_offer"
+    }
+  ]
+}

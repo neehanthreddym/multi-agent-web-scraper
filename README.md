@@ -20,6 +20,10 @@ Initial fields: product name, source product ID, current price, currency, availa
 
 The local UI creates one-page jobs against the owned desk-lamp fixture, lets you select product fields, polls job progress, filters the latest 100 jobs by status, cancels unfinished jobs, and displays original results with field evidence and saved HTML as escaped text. PostgreSQL retains jobs, snapshots, and records. Arbitrary catalogs, pagination/discovery, human review, exports, agents, rendering, evaluation, and public deployment are not implemented yet.
 
+## Development fixture dataset
+
+The [catalog fixture guide](fixtures/README.md) documents ten saved development pages, a separate answer key with sixty field labels and evidence references, dataset version `1.0.0`, and SHA-256 fingerprints. Cases cover different JSON-LD layouts, missing values, ambiguous currency, invalid prices, and unsupported offers. The original desk-lamp page is preserved. Direct source review and user-run consistency verification passed on 2026-10-25, including all three verifier PASS messages; no ten-page extraction score is claimed. The UI/API still accepts only the desk-lamp preset until Issue #4 adds fixture-set support; offline evaluation follows in Issue #5.
+
 ## Stack
 
 - **Frontend:** React, Vite, TypeScript, Tailwind CSS, shadcn/ui.

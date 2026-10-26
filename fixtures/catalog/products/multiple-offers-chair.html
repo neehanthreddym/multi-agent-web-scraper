@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Task Chair | Controlled Catalog</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "Task Chair",
+        "sku": "CHR-009",
+        "offers": [
+          {
+            "@type": "Offer",
+            "price": "129.00",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock",
+            "url": "http://fixture:8080/products/multiple-offers-chair.html"
+          },
+          {
+            "@type": "Offer",
+            "price": "149.00",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/OutOfStock",
+            "url": "http://fixture:8080/products/multiple-offers-chair.html"
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <main>
+      <p>Owned development fixture · synthetic product data</p>
+      <h1>Task Chair</h1>
+      <p>Product ID: CHR-009</p>
+      <section aria-label="Offer 1">
+        <h2>Offer 1</h2>
+        <dl>
+          <dt>Current price</dt><dd>129.00 USD</dd>
+          <dt>Availability</dt><dd>InStock</dd>
+        </dl>
+      </section>
+      <section aria-label="Offer 2">
+        <h2>Offer 2</h2>
+        <dl>
+          <dt>Current price</dt><dd>149.00 USD</dd>
+          <dt>Availability</dt><dd>OutOfStock</dd>
+        </dl>
+      </section>
+    </main>
+  </body>
+</html>
