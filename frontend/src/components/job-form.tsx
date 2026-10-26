@@ -1,5 +1,5 @@
-import { useRef, useState, type FormEvent } from "react";
-import { ALL_FIELDS, FIELD_LABELS, SOURCE_URL, type JobConfiguration, type ProductField } from "@/api";
+import { useEffect, useRef, useState, type FormEvent } from "react";
+import { ALL_FIELDS, FIELD_LABELS, api, type CatalogPreset, type JobConfiguration, type ProductField } from "@/api";
 import { Button } from "./ui/button";
 
 const PENDING_KEY = "catalog-pending-submission";
@@ -27,13 +27,40 @@ export function JobForm({ onCreate }: {
   const [fields, setFields] = useState<ProductField[]>([...ALL_FIELDS]);
   const [pending, setPending] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [presets, setPresets] = useState<CatalogPreset[]>([]);
+  const [presetId, setPresetId] = useState("desk-lamp");
+  const [presetError, setPresetError] = useState<string | null>(null);
+  const [presetRetry, setPresetRetry] = useState(0);
+  const [loadingPresets, setLoadingPresets] = useState(true);
   const pendingRequest = useRef<{ body: string; key: string } | null>(null);
+  const preset = presets.find((item) => item.id === presetId);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    setLoadingPresets(true);
+    setPresetError(null);
+    async function load() {
+      try {
+        const result = await api.presets(controller.signal);
+        if (controller.signal.aborted) return;
+        if (!result.items.length) throw new Error("No catalog presets are available.");
+        setPresets(result.items);
+        setPresetId((current) => result.items.some((item) => item.id === current) ? current : result.items[0].id);
+      } catch (failure) {
+        if (!controller.signal.aborted) setPresetError(failure instanceof Error ? failure.message : "Could not load catalog presets.");
+      } finally {
+        if (!controller.signal.aborted) setLoadingPresets(false);
+      }
+    }
+    void load();
+    return () => controller.abort();
+  }, [presetRetry]);
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (pending || fields.length === 0) return;
+    if (pending || fields.length === 0 || !preset || loadingPresets || presetError) return;
     const configuration: JobConfiguration = {
-      seed_url: SOURCE_URL, page_limit: 1,
+      seed_url: preset.source_url, page_limit: 1,
       selected_fields: ALL_FIELDS.filter((field) => fields.includes(field)),
     };
     setPending(true);
@@ -59,10 +86,15 @@ export function JobForm({ onCreate }: {
     <form onSubmit={submit} className="mt-6 space-y-5">
       <div>
         <label htmlFor="source-preset">Catalog preset</label>
-        <select id="source-preset" disabled={pending} defaultValue="desk-lamp" className="control mt-2">
-          <option value="desk-lamp">Studio Desk Lamp · owned fixture</option>
+        <select id="source-preset" disabled={pending || loadingPresets || Boolean(presetError)} value={presetId} onChange={(event) => setPresetId(event.target.value)} className="control mt-2">
+          {!presets.length && <option value="desk-lamp">{loadingPresets ? "Loading catalog presets…" : "Catalog presets unavailable"}</option>}
+          {presets.map((item) => <option key={item.id} value={item.id}>{item.label}</option>)}
         </select>
-        <p className="muted mt-2 break-all text-xs">{SOURCE_URL}</p>
+        {preset && <p className="muted mt-2 break-all text-xs">{preset.source_url}</p>}
+        {presetError && <div role="alert" className="error-box mt-2">
+          <p>{presetError}</p>
+          <Button type="button" variant="outline" className="mt-2" onClick={() => setPresetRetry((value) => value + 1)}>Retry catalog presets</Button>
+        </div>}
       </div>
       <fieldset disabled={pending}>
         <legend className="mb-3 text-sm font-semibold">Product fields</legend>
@@ -80,7 +112,7 @@ export function JobForm({ onCreate }: {
         <p className="mt-1">Deterministic extraction. No model inference.</p>
       </div>
       {error && <p role="alert" className="error-box">{error}</p>}
-      <Button type="submit" className="w-full" disabled={pending || fields.length === 0}>
+      <Button type="submit" className="w-full" disabled={pending || fields.length === 0 || !preset || loadingPresets || Boolean(presetError)}>
         {pending ? "Submitting…" : "Create job"}
       </Button>
       {fields.length === 0 && <p className="muted">Select at least one field.</p>}

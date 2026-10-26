@@ -1,4 +1,5 @@
 export const SOURCE_URL = "http://fixture:8080/products/desk-lamp.html";
+export interface CatalogPreset { id: string; label: string; source_url: string }
 export const FIELD_LABELS = {
   product_name: "Product name", source_product_id: "Source product ID",
   current_price: "Current price", currency: "Currency",
@@ -15,7 +16,10 @@ export interface Job {
 }
 export interface FieldObservation {
   value: string | null; null_reason: string | null; extraction_method: string;
-  evidence: { script_index: number; field_path: string; excerpt: string } | null;
+  evidence: {
+    script_index: number; field_path: string; excerpt: string;
+    kind?: "json_ld_value" | "json_ld_absence"; missing_key?: string;
+  } | null;
 }
 export interface ProductRecord {
   id: string; job_id: string; snapshot_id: string;
@@ -42,6 +46,7 @@ async function jsonRequest<T>(path: string, options: RequestInit = {}): Promise<
 }
 
 export const api = {
+  presets: (signal?: AbortSignal) => jsonRequest<{ items: CatalogPreset[] }>("/presets", { signal }),
   jobs: (signal?: AbortSignal) => jsonRequest<{ items: Job[] }>("/jobs?limit=100", { signal }),
   job: (id: string, signal?: AbortSignal) => jsonRequest<Job>(`/jobs/${encodeURIComponent(id)}`, { signal }),
   records: (id: string, signal?: AbortSignal) => jsonRequest<{ items: ProductRecord[] }>(`/jobs/${encodeURIComponent(id)}/records`, { signal }),

@@ -76,7 +76,7 @@ def process_job(job_id: str) -> None:
             db.flush()
             snapshot_id = snapshot.id
         # Retain the fetched snapshot even when extraction subsequently fails.
-        fields = extract_fields(html, config.selected_fields)
+        fields = extract_fields(html, config.selected_fields, source_url=config.seed_url)
         with SessionLocal.begin() as db:
             job = db.scalar(select(Job).where(Job.id == identity).with_for_update())
             if job.status != "running" or job.claim_token != token:

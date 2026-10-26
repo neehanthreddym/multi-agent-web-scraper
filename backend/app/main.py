@@ -11,7 +11,7 @@ from fastapi.responses import PlainTextResponse
 from sqlalchemy import delete, select
 from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 
-from app.constants import JOB_TIMEOUT_SECONDS
+from app.constants import FIXTURE_PRESETS, JOB_TIMEOUT_SECONDS
 from app.database import SessionLocal
 from app.models import Job, Outbox, ProductRecord, Snapshot, utcnow
 from app.schemas import JobCreate
@@ -28,6 +28,15 @@ app = FastAPI(
 def health() -> dict[str, str]:
     """Report API process liveness, not database or broker connectivity."""
     return {"status": "ok", "service": "api"}
+
+
+@app.get("/presets", tags=["jobs"])
+def list_presets() -> dict[str, Any]:
+    return {"items": [
+        {"id": preset_id, "label": label,
+         "source_url": f"http://fixture:8080/products/{preset_id}.html"}
+        for preset_id, label in FIXTURE_PRESETS
+    ]}
 
 
 def job_view(job: Job) -> dict[str, Any]:

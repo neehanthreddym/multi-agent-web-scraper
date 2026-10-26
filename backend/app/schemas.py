@@ -4,7 +4,7 @@ from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
-from app.constants import PRODUCT_FIELDS, SOURCE_URL
+from app.constants import FIXTURE_URLS, PRODUCT_FIELDS, SOURCE_URL
 
 
 class JobCreate(BaseModel):
@@ -19,8 +19,8 @@ class JobCreate(BaseModel):
     @field_validator("seed_url")
     @classmethod
     def owned_fixture_only(cls, value: str) -> str:
-        if value != SOURCE_URL:
-            raise ValueError("Only the owned desk-lamp fixture URL is supported in this increment")
+        if value not in FIXTURE_URLS:
+            raise ValueError("Select one of the server-owned catalog fixture URLs")
         return value
 
     @field_validator("selected_fields")

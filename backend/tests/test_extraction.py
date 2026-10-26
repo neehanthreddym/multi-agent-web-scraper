@@ -45,7 +45,9 @@ def test_missing_currency_remains_null_without_guessing(product):
     result = extract_fields(page(product), ["currency"])
     assert result["currency"]["value"] is None
     assert result["currency"]["null_reason"] == "missing_value"
-    assert result["currency"]["evidence"] is None
+    assert result["currency"]["evidence"]["kind"] == "json_ld_absence"
+    assert result["currency"]["evidence"]["missing_key"] == "priceCurrency"
+    assert result["currency"]["evidence"]["field_path"] == "/offers"
 
 
 @pytest.mark.parametrize("price", [True, "NaN", "Infinity", "-1", "1e100000", {"amount": 2}])

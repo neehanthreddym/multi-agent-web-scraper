@@ -34,7 +34,7 @@ Labels follow the `single_product_single_offer_v1` policy. Prices are decimal st
 
 Two offers are outside the one-offer scope: all four offer-level fields remain null with `unsupported_offer_structure`, with both offers retained in evidence. Names and SKUs are still labeled. Nulls do not remove a product from the expected count: every page contains one product. `valid` and `needs_review` are expected validation outcomes, not human approval decisions or observed job results.
 
-These labels describe the intended deterministic behavior. The current API/worker still permits only the original desk-lamp URL, and the extractor still validates product URLs against that one URL. Issue #4 adds preset support and the required URL handling. Issue #5 measures predictions against this dataset. No extraction score or ten-page runtime success is claimed here.
+These labels describe the intended deterministic behavior. Issue #4 adds ten exact server-owned presets to the API/worker and validates each extracted product URL against the selected page. User-run backend tests and the ten-fixture live acceptance check passed; direct browser review also passed on 2026-10-26. See the [verified checks in the architecture](../ARCHITECTURE.md#issue-4-implementation-and-verified-checks-2026-10-26). The labels, hashes and page bytes are unchanged. These are acceptance checks, not extraction scores; Issue #5 measures predictions against this dataset.
 
 Treat released dataset bytes and labels as immutable. When changing either, create a new version and update hashes together; retain the old version so runs remain comparable. The baseline desk-lamp SHA-256 is `68141e6f81c7bf384bfcdf701e47d0a4bf305df04f276087f841e428c5457787`.
 

@@ -51,6 +51,7 @@ export function EvidenceDialog({ record }: { record: ProductRecord }) {
           {observation?.evidence ? <>
             <p className="muted mt-2">JSON-LD script index: {observation.evidence.script_index}</p>
             <p className="mt-1 break-all font-mono text-sm">{observation.evidence.field_path}</p>
+            {observation.evidence.kind === "json_ld_absence" && <p className="muted mt-2">Missing source key: {observation.evidence.missing_key}. The excerpt shows its parent object.</p>}
             <pre className="code-box mt-3">{observation.evidence.excerpt}</pre>
           </> : <p className="muted mt-2">No supporting field evidence was found.</p>}
         </div>
