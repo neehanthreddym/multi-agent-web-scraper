@@ -4,7 +4,7 @@
 
 Competitor Product Intelligence turns product pages into structured catalog records. Track extraction jobs, inspect prices and availability, and trace each extracted field to saved source evidence.
 
-**Status:** The local ten-fixture workflow is verified through user-run builds, 69 backend tests, five frontend component tests, four Playwright browser tests, and live API → queue → worker → PostgreSQL checks. Direct browser review on 2026-10-26 confirmed preset selection, saved evidence, null reasons and keyboard behavior at a narrow viewport. Review, exports, agents, evaluation and public deployment remain later increments. No extraction performance has been measured.
+**Status:** The local ten-fixture workflow is verified through user-run builds, 100 backend tests, five frontend component tests, four Playwright browser tests, and live API → queue → worker → PostgreSQL checks. Direct browser review on 2026-10-26 confirmed preset selection, saved evidence, null reasons and keyboard behavior at a narrow viewport. The offline deterministic baseline also passed on 2026-10-26: all ten saved development records and twelve null reasons matched the labels, with matching result fingerprints across two runs. Review, exports, agents, evaluation UI and public deployment remain later increments. These development results do not establish accuracy on unseen websites.
 
 ## Planned workflow
 
@@ -18,11 +18,11 @@ Initial fields: product name, source product ID, current price, currency, availa
 
 ## Current capabilities
 
-The local UI now loads ten server-owned sources from `GET /presets`, creates one-page jobs for the selected fixture, lets you select product fields, polls job progress, filters the latest 100 jobs by status, cancels unfinished jobs, and displays original results with field evidence and saved HTML as escaped text. Preset loading failures offer retry, and submission stays disabled until a source is available. New evidence includes parent objects for missing fields and original containers for unsupported offers. PostgreSQL retains jobs, snapshots, and records. Arbitrary catalogs, pagination/discovery, human review, exports, agents, rendering, evaluation, and public deployment are not implemented yet.
+The local UI now loads ten server-owned sources from `GET /presets`, creates one-page jobs for the selected fixture, lets you select product fields, polls job progress, filters the latest 100 jobs by status, cancels unfinished jobs, and displays original results with field evidence and saved HTML as escaped text. Preset loading failures offer retry, and submission stays disabled until a source is available. New evidence includes parent objects for missing fields and original containers for unsupported offers. PostgreSQL retains jobs, snapshots, and records. A separate offline CLI evaluates saved fixtures and writes original predictions and scores as JSON; its tests and repeatable ten-page development baseline passed. Arbitrary catalogs, pagination/discovery, human review, exports, agents, rendering, evaluation UI/background jobs, and public deployment are not implemented yet.
 
 ## Development fixture dataset
 
-The [catalog fixture guide](fixtures/README.md) documents ten saved development pages, a separate answer key with sixty field labels and evidence references, dataset version `1.0.0`, and SHA-256 fingerprints. Cases cover different JSON-LD layouts, missing values, ambiguous currency, invalid prices, and unsupported offers. The original desk-lamp page is preserved. Direct source review and user-run consistency verification passed on 2026-10-25, including all three verifier PASS messages; no ten-page extraction score is claimed. Issue #4 adds preset selection and URL-scoped extraction. User-run output confirmed all five application images built, 69 backend tests passed with one deprecation warning, and all five frontend component tests passed. TypeScript/Vite compilation, the ten-fixture live acceptance check and all four Playwright browser tests passed on 2026-10-26. Direct browser review also passed: ten presets, source URL changes, graph-monitor results, null reasons and absence evidence, plus keyboard operation, visible focus and Escape/focus restoration at a measured 390-pixel CSS width. This is not a physical-device or full accessibility audit. See the [verified checks in the architecture](ARCHITECTURE.md#issue-4-implementation-and-verified-checks-2026-10-26). Offline evaluation follows in Issue #5.
+The [catalog fixture guide](fixtures/README.md) documents ten saved development pages, a separate answer key with sixty field labels and evidence references, dataset version `1.0.0`, and SHA-256 fingerprints. Cases cover different JSON-LD layouts, missing values, ambiguous currency, invalid prices, and unsupported offers. The original desk-lamp page is preserved. Direct source review and user-run consistency verification passed on 2026-10-25, including all three verifier PASS messages; that integrity check did not measure extraction accuracy. Issue #4 adds preset selection and URL-scoped extraction. User-run output confirmed all five application images built, 69 backend tests passed with one deprecation warning, and all five frontend component tests passed. TypeScript/Vite compilation, the ten-fixture live acceptance check and all four Playwright browser tests passed on 2026-10-26. Direct browser review also passed: ten presets, source URL changes, graph-monitor results, null reasons and absence evidence, plus keyboard operation, visible focus and Escape/focus restoration at a measured 390-pixel CSS width. This is not a physical-device or full accessibility audit. See the [verified checks in the architecture](ARCHITECTURE.md#issue-4-implementation-and-verified-checks-2026-10-26). The offline evaluation implementation and measured development baseline for Issue #5 are recorded below.
 
 ## Stack
 
@@ -31,13 +31,13 @@ The [catalog fixture guide](fixtures/README.md) documents ten saved development 
 - **Background jobs:** Celery and RabbitMQ.
 - **Fetching:** HTTPX, Beautiful Soup, and lxml. LangGraph and Playwright for Python rendering are planned.
 - **Local development:** Podman Compose. Ollama is planned for later model evaluation and is not a Compose service. No model is selected yet.
-- **Testing:** pytest, Vitest component tests, and Playwright UI tests. Custom evaluation functions are planned.
+- **Testing:** pytest, Vitest component tests, and Playwright UI tests. Offline deterministic scoring functions and metric edge-case tests are implemented; all 100 backend tests passed with networking disabled on 2026-10-26 (one non-failing TestClient deprecation warning).
 
 ## Build local first
 
 Start with one owned, controlled product page: **UI → API → worker → database → saved result and evidence in the UI**. Use deterministic extraction before adding bounded Discovery, Extraction, and Validation agents.
 
-The ten labeled development fixtures and controlled extraction flow are available. Next, add offline evaluation, review, and exports. Crawling stays within approved destinations and application-enforced budgets.
+The ten labeled development fixtures and controlled extraction flow are available. Verify the offline evaluation baseline next, then add review and exports. Crawling stays within approved destinations and application-enforced budgets.
 
 Remote target: Vercel frontend and lightweight API, with separately hosted background services and inference. Providers, inference hardware/model, costs, retention, and Vercel connectivity remain open. The public demo must work while the development computer is offline.
 
@@ -112,4 +112,51 @@ podman compose logs --tail=80 api worker dispatcher postgres rabbitmq fixture we
 
 Verification details are recorded in [ARCHITECTURE.md](ARCHITECTURE.md#issue-4-implementation-and-verified-checks-2026-10-26). User-supplied output confirms all seven application services healthy, the saved lockfile used through `npm ci`, passing tests and production compilation, the legacy smoke check and the ten-fixture live acceptance check. The latter retained eleven jobs and checked selected fields, idempotency, completed-job worker re-entry, rejected requests and saved evidence. Direct browser review additionally retained a completed keyboard-submitted graph-monitor job.
 
-Earlier user-run checks established queued-job recovery, queued-job cancellation and persistence after a full stop/start. The user reported the active-extraction recovery follow-up complete; its original output was not independently inspected during Issue #4 verification. The current manual review covered an in-app browser viewport and keyboard interaction; physical devices, screen readers, contrast and other browsers were not audited. One backend TestClient deprecation warning remains. No model calls, evaluation metrics or deployment success are claimed.
+Earlier user-run checks established queued-job recovery, queued-job cancellation and persistence after a full stop/start. The user reported the active-extraction recovery follow-up complete; its original output was not independently inspected during Issue #4 verification. The current manual review covered an in-app browser viewport and keyboard interaction; physical devices, screen readers, contrast and other browsers were not audited. One backend TestClient deprecation warning remains. Those live workflow checks did not run models or measure offline extraction accuracy; the separate offline baseline is recorded below. No deployment success is claimed.
+
+## Offline evaluation
+
+`python -m app.evaluate` reads the ten versioned HTML pages directly, runs the existing deterministic extractor without fetching URLs, and scores original predictions against the separate authored labels. It imports no database or worker entry point. No service startup, migrations, model, new package or frontend rebuild is needed for this increment. The commands below disable the evaluation container network and mount fixtures read-only. The image build may need registry/package access.
+
+Run one command at a time from `/Users/neehanth/Documents/PortfolioProjects/multi-agent-web-scraper`, inspecting each result before continuing:
+
+1. Build the API image containing the evaluator and tests. Expected: the image builds successfully. This does not start or recreate the running application.
+
+   ```bash
+   podman compose build api
+   ```
+
+2. Run the complete backend suite with no container network. Expected: all tests pass, including metric edge cases, corrupted-input rejection, extraction-failure accounting, source-evidence checks, JSON output and repeatability. Verified from user-supplied output on 2026-10-26: 100 passed, one non-failing Starlette TestClient deprecation warning, in 0.83 seconds. The earlier 69-test result belongs to Issue #4.
+
+   ```bash
+   podman run --rm --pull=never --network none --volume "$PWD/fixtures:/fixtures:ro" competitor-product-intelligence-api python -m pytest -q -o cache_dir=/tmp/catalog-pytest-cache
+   ```
+
+3. Create a local output directory. Expected: the directory exists; it is ignored by Git.
+
+   ```bash
+   mkdir -p evaluation-results
+   ```
+
+4. Save the baseline JSON. Expected: the terminal shows a concise summary and a matching result SHA-256 across two runs; JSON alone is saved to the named file. Inspect the summary and exit/failure output before relying on the saved scores. Use a new output filename for subsequent retained runs.
+
+   ```bash
+   podman run --rm --pull=never --network none --volume "$PWD/fixtures:/fixtures:ro" competitor-product-intelligence-api python -m app.evaluate --fixtures-root /fixtures --check-repeat > evaluation-results/catalog-v1-baseline.json
+   ```
+
+The report includes dataset/method/scorer versions, manifest/label/page/code hashes, Python/parser package versions, original predictions, authored expectations, findings, per-field and micro precision/recall/F1 with counts and denominators, complete-record and exact-page accuracy, null-value/reason accuracy by expected reason, evidence coverage/label-source agreement, review burden, extraction failures and runtime. Decimal price strings compare numerically; other field values compare exactly. Undefined ratios are JSON `null` and display as `n/a`. Read the [scoring details and limitations](ARCHITECTURE.md#offline-deterministic-evaluation-issue-5).
+
+`--check-repeat` compares result fingerprints, not entire report bytes: elapsed time is intentionally excluded from the fingerprint. No timestamp or absolute local path is embedded in successful reports. Exit status 0 means the evaluator completed without extraction failures, not that every prediction was correct; 1 saves a scored report containing extraction failures, and 2 indicates invalid inputs or a repeatability failure with no scored JSON. The host redirection can leave an empty file on an input error, so inspect the exit/output before treating it as a report. Generated reports stay local by default. The saved labels, page bytes, original application records and review history are not modified.
+
+Verified on 2026-10-26 from user-run output and direct inspection of the saved report: 100 backend tests passed (one existing deprecation warning), and the offline baseline completed with matching fingerprints across two runs.
+
+| Measured development baseline | Result |
+|---|---|
+| Field precision / recall / F1 | 100% / 100% / 100%; TP=48, FP=0, FN=0 |
+| Complete records / exact pages | 10/10 (100%) for both |
+| Null values / reasons | 12/12 (100%) for both; zero spurious values |
+| Non-null evidence coverage / label-source agreement | 48/48 (100%) for both; unsupported values 0/48 |
+| Extraction failures / HTTP requests / model calls | 0 / 0 / 0 |
+| Local runtime | 0.075396 seconds for the first run; repeat-run time is not included |
+
+Result SHA-256: `036d21ae7134b5e3e259427eb7b1a137ee5ef438273ae153f8ff0aa92fe5d142`. See [the architecture baseline record](ARCHITECTURE.md#offline-deterministic-evaluation-issue-5) for denominators, environment, review burden and verification details. These scores describe ten authored development fixtures used during implementation; they are not held-out or public-site accuracy, an independent semantic evidence audit, or model performance.
